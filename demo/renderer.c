@@ -36,6 +36,16 @@ void r_init(void) {
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
   glEnableClientState(GL_COLOR_ARRAY);
 
+  int i,j;
+  for(i=0;i<128;i++){
+    for(j=0;j<128;j++){
+     if(atlas_texture[i][j]==' ')
+       atlas_texture[i][j]=0;
+     else
+       atlas_texture[i][j]=-1;
+    }
+  }
+
   /* init texture */
   GLuint id;
   glGenTextures(1, &id);
@@ -162,7 +172,7 @@ int r_get_text_width(const char *text, int len) {
 
 
 int r_get_text_height(void) {
-  return 18;
+  return 16;
 }
 
 
